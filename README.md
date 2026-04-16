@@ -9,6 +9,19 @@ This is a full-stack library application to manage AI Image Generation Prompts. 
 - **Database**: PostgreSQL handles persistent record storage. 
 - **Caching/Counter**: Redis acts as a fast in-memory store representing the single source of truth for the `view_count` on the `Prompt` details endpoint, which guarantees high throughput.
 
+## Screenshots
+
+> **Note to user:** Replace these placeholder links with actual screenshot images of your running application before submitting.
+
+![Prompt List View](./screenshots/list_view.png)
+*Prompt List View*
+
+![Prompt Details View](./screenshots/details_view.png)
+*Prompt Details View*
+
+![Add Prompt Form](./screenshots/add_prompt.png)
+*Add Prompt Form*
+
 ## Setup Instructions
 
 The application is fully containerized. You will need [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed on your machine.
