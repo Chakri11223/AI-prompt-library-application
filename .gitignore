@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+db.sqlite3
+.env
+.ipynb_checkpoints/
+node_modules/
+.angular/
+dist/
+.vscode/

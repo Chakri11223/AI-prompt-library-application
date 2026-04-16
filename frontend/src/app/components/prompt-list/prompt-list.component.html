@@ -1,0 +1,29 @@
+<div class="list-container">
+  <div class="header-action">
+    <h1>AI Prompt Library</h1>
+    <a routerLink="/prompts/new" class="btn-primary">Create New Prompt</a>
+  </div>
+
+  <div *ngIf="loading" class="loading-state">
+    <div class="spinner"></div>
+    <p>Loading your creative sparks...</p>
+  </div>
+
+  <div *ngIf="!loading && prompts.length === 0" class="empty-state glass-panel">
+    <h3>No Prompts Found</h3>
+    <p>Be the first to create an amazing AI image generation prompt!</p>
+  </div>
+
+  <div *ngIf="!loading && prompts.length > 0" class="grid-container">
+    <div *ngFor="let prompt of prompts" class="prompt-card glass-panel" [routerLink]="['/prompts', prompt.id]">
+      <div class="card-header">
+        <div class="complexity-badge" [style.background]="getComplexityColor(prompt.complexity)">
+          Lv. {{ prompt.complexity }}
+        </div>
+      </div>
+      <h2>{{ prompt.title }}</h2>
+      <p class="date">{{ prompt.created_at | date:'mediumDate' }}</p>
+      <div class="hover-indicator">View Details →</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="form-container">
+  <div class="header-action">
+    <a routerLink="/prompts" class="back-link">← Back to Prompts</a>
+  </div>
+
+  <div class="form-card glass-panel">
+    <h2>Create New Prompt</h2>
+    <p class="subtitle">Share your creative AI formula with the world.</p>
+
+    <form [formGroup]="promptForm" (ngSubmit)="onSubmit()">
+      
+      <div class="form-group">
+        <label for="title">Prompt Title</label>
+        <input type="text" id="title" class="input-field" formControlName="title" placeholder="e.g. Cyberpunk Neon Cityscape">
+        <div *ngIf="f['title'].touched && f['title'].errors" class="error">
+          <small *ngIf="f['title'].errors['required']">Title is required.</small>
+          <small *ngIf="f['title'].errors['minlength']">Title must be at least 3 characters long.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="content">Prompt Content</label>
+        <textarea id="content" rows="6" class="input-field" formControlName="content" placeholder="A highly detailed shot of..."></textarea>
+        <div *ngIf="f['content'].touched && f['content'].errors" class="error">
+          <small *ngIf="f['content'].errors['required']">Content is required.</small>
+          <small *ngIf="f['content'].errors['minlength']">Content must be at least 20 characters long.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="complexity">Complexity (1-10): {{ f['complexity'].value }}</label>
+        <input type="range" id="complexity" min="1" max="10" formControlName="complexity" class="slider">
+      </div>
+
+      <button type="submit" class="btn-primary form-submit" [disabled]="promptForm.invalid || isSubmitting">
+        {{ isSubmitting ? 'Creating...' : 'Create Prompt' }}
+      </button>
+
+    </form>
+  </div>
+</div>

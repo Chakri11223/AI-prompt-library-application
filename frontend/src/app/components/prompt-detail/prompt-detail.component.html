@@ -1,0 +1,35 @@
+<div class="detail-container">
+  <div class="header-action">
+    <a routerLink="/prompts" class="back-link">← Back to Prompts</a>
+  </div>
+
+  <div *ngIf="loading" class="loading-state">
+    <div class="spinner"></div>
+    <p>Loading prompt details...</p>
+  </div>
+
+  <div *ngIf="error" class="error-state">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="prompt && !loading" class="prompt-detail-card glass-panel">
+    <div class="card-header">
+      <div class="complexity-badge" [style.background]="getComplexityColor(prompt.complexity)">
+        Lv. {{ prompt.complexity }} Complexity
+      </div>
+      <div class="view-counter">
+        <span class="icon">👁️</span> {{ prompt.view_count || 0 }} Views
+      </div>
+    </div>
+    
+    <h1 class="title">{{ prompt.title }}</h1>
+    <p class="date">Created on {{ prompt.created_at | date:'longDate' }}</p>
+    
+    <div class="content-box">
+      <h3>Prompt Content</h3>
+      <div class="prompt-text">
+        {{ prompt.content }}
+      </div>
+    </div>
+  </div>
+</div>
